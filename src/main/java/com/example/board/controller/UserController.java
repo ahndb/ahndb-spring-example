@@ -3,9 +3,11 @@ package com.example.board.controller;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.board.dto.response.user.GetUserResponseDto;
 import com.example.board.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -21,10 +23,11 @@ public class UserController {
   @GetMapping("/{email}")
   public ResponseEntity<? super GetUserResponseDto> getUser(
     @PathVariable("email") String email
-  ){
-    
+  ) {
+    ResponseEntity<? super GetUserResponseDto> respnse = userService.getUser(email);
+    return respnse;
   }
-  }
+
 
   // 닉네임 수정
   @PatchMapping("/nickname")
@@ -32,14 +35,11 @@ public class UserController {
     return null;
   }
 
+
   // 프로필 이미지 수정
   @PatchMapping("/profile-image")
   public String profileImage() {
     return null;
   }
-
-  
-
-
 
 }
