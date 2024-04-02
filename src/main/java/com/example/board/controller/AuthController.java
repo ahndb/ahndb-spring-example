@@ -5,20 +5,18 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
 @RestController
-@RequestMapping("/api/vi")
+@RequestMapping("/api/vi/auth")
 public class AuthController {
-  
-  @PostMapping("/auth/sign-in")
+
+  @PostMapping("/sign-in")
   public String signIn(@RequestBody String entity) {
-      return null;
+    return null;
   }
 
-  @PostMapping("/auth/sign-up")
+  @PostMapping("/sign-up")
   public String signUp(@RequestBody String entity) {
-      return null;
+    return null;
   }
-  
-  
+
 }
