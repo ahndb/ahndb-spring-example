@@ -3,5 +3,5 @@ package com.example.board.service;
 import org.springframework.http.ResponseEntity;
 
 public interface UserService {
-  ResponseEntity<? super > ();
+  ResponseEntity<? super GetUserResponseDto> getUserResponseEntity();
 }
