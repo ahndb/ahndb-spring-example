@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.board.dto.response.ResponseDto;
 import com.example.board.service.BoardService;
+import com.example.board.dto.response.board.GetLatestListResponseDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RequiredArgsConstructor
 public class BoardController {
 
-  private final BoardService BoardService;
+  private final BoardService boardService;
 
   @GetMapping("/latest-list")
   public ResponseEntity<? super GetLatestListResponseDto> getLatestList() {

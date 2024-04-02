@@ -14,16 +14,19 @@ import lombok.Getter;
 
 @Getter
 public class GetLatestListResponseDto extends ResponseDto {
-  private List<BoardListItem> latestList;
+  // 3개가 한 세트가 됨 
+  private List<BoardListItem> latestList; // 속성의 값만 바꾸는 느낌
 
-  private GetLatestListResponseDto(List<BoardListItem> latestList) {
+  public GetLatestListResponseDto(List<BoardListItem> latestList) {
     super(ResponseCode.SUCCESS, ResponseMessage.SUCCESS);
     this.latestList = latestList;
   }
 
+  // 안 옳긴 이유
   public static ResponseEntity<GetLatestListResponseDto> success(List<BoardListItem> latestList) {
     GetLatestListResponseDto body = new GetLatestListResponseDto(latestList);
     return ResponseEntity.status(HttpStatus.OK).body(body);
   }
 
 }
+

@@ -1,5 +1,7 @@
 package com.example.board.service;
 
-public class UserService {
-  
+import org.springframework.http.ResponseEntity;
+
+public interface UserService {
+  ResponseEntity<? super > ();
 }

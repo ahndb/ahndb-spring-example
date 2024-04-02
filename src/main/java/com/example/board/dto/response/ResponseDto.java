@@ -12,9 +12,14 @@ public class ResponseDto {
   private String code;
   private String message;
   
+  // 여기로 옮긴 이유: 같은 내용으로 계속 쓰이기 때문에 
   public static ResponseEntity<ResponseDto> databaseError() {
     ResponseDto body = new ResponseDto(ResponseCode.DATABASE_ERROR, ResponseMessage.DATABASE_ERROR);
     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
   }
 
+  public static ResponseEntity<ResponseDto> notExistUser () {
+    ResponseDto body = new ResponseDto(ResponseCode.NOT_EXIST_USER, ResponseMessage.NOT_EXIST_USER);
+    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(body);
+  }
 }

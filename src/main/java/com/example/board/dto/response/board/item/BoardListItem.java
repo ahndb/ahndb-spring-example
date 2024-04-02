@@ -6,6 +6,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class BoardListItem {
+  // 내용물이 바뀔 필요는 없음
   private Integer boardNumber;
   private String title;
   private String content;
