@@ -2,21 +2,39 @@ package com.example.board.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.example.board.dto.request.auth.SignUpRequestDto;
+import com.example.board.dto.response.ResponseDto;
+import com.example.board.service.AuthService;
+
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("/api/v1/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
+  private final AuthService authService;
+
   @PostMapping("/sign-in")
-  public String signIn(@RequestBody String entity) {
-    return null;
+  public ResponseEntity<ResponseDto> signIn(
+    @RequestBody @Valid
+    ) {
+    ResponseEntity<ResponseDto>
+    response = authService.signIn(requestBody);
+    return response;
   }
 
   @PostMapping("/sign-up")
-  public String signUp(@RequestBody String entity) {
-    return null;
+  public ResponseEntity<ResponseDto> signUp(
+    @RequestBody @Valid SignUpRequestDto requestBody
+    ) {
+      ResponseEntity<ResponseDto> response = authService.signUp(requestBody);
+    return response; 
   }
-
 }
