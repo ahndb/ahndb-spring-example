@@ -1,7 +1,6 @@
 package com.example.board.entity;
 
 import com.example.board.dto.request.auth.SignUpRequestDto;
-import com.example.board.dto.request.user.NicknameRequestDto;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -36,11 +35,6 @@ public class UserEntity {
     this.addressDetail = dto.getAddressDetail();
     // this.profileImageUrl = dto.getProfileImageUrl();
   
-  }
-  
-  public UserEntity(NicknameRequestDto dto) {
-    this.email = dto.getEmail();
-    this.nickname = dto.getNickname();
   }
 
 }

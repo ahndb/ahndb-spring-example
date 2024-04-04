@@ -69,12 +69,18 @@ public class UserServiceImplementation implements UserService {
 
       // 존재하지 않는 유저 email로 중복검사
       String email = dto.getEmail();
-      boolean isExistEmail = userRepository.existsByEmail(email);
-      if (!isExistEmail)
-        return ResponseDto.notExistUser();
+      // boolean isExistEmail = userRepository.existsByEmail(email);
+      // if (!isExistEmail)
+      // return ResponseDto.notExistUser();
 
+      // boolean형태로는 데이터값을 찾을 수가 없어서 데이터 값을 찾기 위해 findByEmail을 사용함
+      UserEntity userEntity = userRepository.findByEmail(email);
+      if (userEntity == null)
+        return ResponseDto.notExistUser();
+        
       // 데이터 저장하고
-      UserEntity userEntity = new UserEntity(dto);
+      userEntity.setNickname(nickname);
+
       userRepository.save(userEntity);
 
       // 성공 문구 반환
