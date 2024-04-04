@@ -21,14 +21,14 @@ public class AuthController {
 
   private final AuthService authService;
 
-  @PostMapping("/sign-in")
-  public ResponseEntity<ResponseDto> signIn(
-    @RequestBody @Valid
-    ) {
-    ResponseEntity<ResponseDto>
-    response = authService.signIn(requestBody);
-    return response;
-  }
+  // @PostMapping("/sign-in")
+  // public ResponseEntity<ResponseDto> signIn(
+  //   @RequestBody @Valid
+  //   ) {
+  //   ResponseEntity<ResponseDto>
+  //   response = authService.signIn(requestBody);
+  //   return response;
+  // }
 
   @PostMapping("/sign-up")
   public ResponseEntity<ResponseDto> signUp(
