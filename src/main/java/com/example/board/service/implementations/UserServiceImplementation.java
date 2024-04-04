@@ -61,18 +61,24 @@ public class UserServiceImplementation implements UserService {
 
     try {
 
-      String userEntity = dto.getNickname();
-      boolean isExistNickname = userRepository.existsByNickname(userEntity);
+      // 중복 닉네임 확인
+      String nickname = dto.getNickname();
+      boolean isExistNickname = userRepository.existsByNickname(nickname);
       if (isExistNickname)
         return ResponseDto.duplicateNickname();
 
-      // 존재하지 않는 유저
+      // 존재하지 않는 유저 email로 중복검사
       String email = dto.getEmail();
       boolean isExistEmail = userRepository.existsByEmail(email);
       if (!isExistEmail)
         return ResponseDto.notExistUser();
 
-      return GetUserResponseDto.success();
+      // 데이터 저장하고
+      UserEntity userEntity = new UserEntity(dto);
+      userRepository.save(userEntity);
+
+      // 성공 문구 반환
+      return ResponseDto.success();
 
     } catch (Exception exception) {
       exception.printStackTrace();

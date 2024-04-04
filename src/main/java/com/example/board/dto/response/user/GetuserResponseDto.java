@@ -11,7 +11,7 @@ import com.example.board.entity.UserEntity;
 import lombok.Getter;
 
 @Getter
-// responseDto리스폰스디티오를 확장해서 사용하기 때문에 
+// responseDto리스폰스디티오를 확장해서 사용하기 때문에
 public class GetUserResponseDto extends ResponseDto {
 
   private String email;
@@ -25,7 +25,7 @@ public class GetUserResponseDto extends ResponseDto {
     this.profileImage = userEntity.getProfileImageUrl();
   }
 
-  public static ResponseEntity<GetUserResponseDto> success(String userEntity) {
+  public static ResponseEntity<GetUserResponseDto> success(UserEntity userEntity) {
     GetUserResponseDto body = new GetUserResponseDto(userEntity);
     return ResponseEntity.status(HttpStatus.OK).body(body);
   }

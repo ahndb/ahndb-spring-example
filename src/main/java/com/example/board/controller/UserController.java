@@ -20,28 +20,24 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/user")
 @RequiredArgsConstructor
 public class UserController {
-  
+
   private final UserService userService;
 
   // 유저 정보
   @GetMapping("/{email}")
   public ResponseEntity<? super GetUserResponseDto> getUser(
-    @PathVariable("email") String email
-  ) {
+      @PathVariable("email") String email) {
     ResponseEntity<? super GetUserResponseDto> respnse = userService.getUser(email);
     return respnse;
   }
 
-
   // 닉네임 수정
   @PatchMapping("/nickname")
   public ResponseEntity<ResponseDto> nickname(
-    @RequestBody @Valid NicknameRequestDto requestBody
-  ) {ResponseEntity<ResponseDto> response = userService.nickname(requestBody);
+      @RequestBody @Valid NicknameRequestDto requestBody) {
+    ResponseEntity<ResponseDto> response = userService.nickname(requestBody);
     return response;
   }
-
-
 
   // 프로필 이미지 수정
   @PatchMapping("/profile-image")
