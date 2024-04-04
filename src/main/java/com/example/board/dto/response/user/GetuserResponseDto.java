@@ -25,7 +25,7 @@ public class GetUserResponseDto extends ResponseDto {
     this.profileImage = userEntity.getProfileImageUrl();
   }
 
-  public static ResponseEntity<GetUserResponseDto> success(UserEntity userEntity) {
+  public static ResponseEntity<GetUserResponseDto> success(String userEntity) {
     GetUserResponseDto body = new GetUserResponseDto(userEntity);
     return ResponseEntity.status(HttpStatus.OK).body(body);
   }

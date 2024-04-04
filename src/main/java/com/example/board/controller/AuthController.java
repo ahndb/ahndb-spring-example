@@ -3,6 +3,7 @@ package com.example.board.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.board.dto.request.auth.SignInRequestDto;
 import com.example.board.dto.request.auth.SignUpRequestDto;
 import com.example.board.dto.response.ResponseDto;
 import com.example.board.service.AuthService;
@@ -21,20 +22,17 @@ public class AuthController {
 
   private final AuthService authService;
 
-  // @PostMapping("/sign-in")
-  // public ResponseEntity<ResponseDto> signIn(
-  //   @RequestBody @Valid
-  //   ) {
-  //   ResponseEntity<ResponseDto>
-  //   response = authService.signIn(requestBody);
-  //   return response;
-  // }
+  @PostMapping("/sign-in")
+  public ResponseEntity<ResponseDto> signIn(
+      @RequestBody @Valid SignInRequestDto requestBody) {
+    ResponseEntity<ResponseDto> response = authService.singIn(requestBody);
+    return response;
+  }
 
   @PostMapping("/sign-up")
   public ResponseEntity<ResponseDto> signUp(
-    @RequestBody @Valid SignUpRequestDto requestBody
-    ) {
-      ResponseEntity<ResponseDto> response = authService.signUp(requestBody);
-    return response; 
+      @RequestBody @Valid SignUpRequestDto requestBody) {
+    ResponseEntity<ResponseDto> response = authService.signUp(requestBody);
+    return response;
   }
 }

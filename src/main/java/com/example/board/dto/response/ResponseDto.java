@@ -41,8 +41,21 @@ public class ResponseDto {
     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(body);
   }
 
+    // 존재하지 않는 유저
   public static ResponseEntity<ResponseDto> notExistUser() {
     ResponseDto body = new ResponseDto(ResponseCode.NOT_EXIST_USER, ResponseMessage.NOT_EXIST_USER);
     return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(body);
   }
+
+  public static ResponseEntity<ResponseDto> validationFail() {
+    ResponseDto body = new ResponseDto(ResponseCode.VALIDATION_FAIL, ResponseMessage.VALIDATION_FAIL);
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+  }
+
+  // 인증실패
+  public static ResponseEntity<ResponseDto> authorizationFail() {
+    ResponseDto body = new ResponseDto(ResponseCode.AUTHORIZATION_FAIL, ResponseMessage.AUTHORIZATION_FAIL);
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(body);
+  }
+
 }
