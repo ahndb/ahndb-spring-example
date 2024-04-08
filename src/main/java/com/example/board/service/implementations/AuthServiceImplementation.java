@@ -41,6 +41,7 @@ public class AuthServiceImplementation implements AuthService {
       // telNumber -> (true, false)
       String telNumber = dto.getTelNumber();
       boolean isExistTelNumber = userRepository.existsByTelNumber(telNumber);
+      //! boolean이나 existsBy, findBy의 중요성 보다 로직에서 그게 필요한지 아닌지를 봐야함
 
       // 3-1. 3에 대한 조회결과가 true일때 중복된 휴대전화번호 응답 처리
       if (isExistTelNumber) return ResponseDto.duplicateTelNumber();
