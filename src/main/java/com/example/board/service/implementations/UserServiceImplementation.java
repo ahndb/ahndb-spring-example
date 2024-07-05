@@ -35,7 +35,7 @@ public class UserServiceImplementation implements UserService {
         return ResponseDto.notExistUser();
 
       // 3. 조회 결과 데이터를 성공 응답
-      return GetUserResponseDto.success();
+      return GetUserResponseDto.success(userEntity);
 
     } catch (Exception exception) {
       // 1-1. 조회 처리 중 데이터베이스관련 예외가 발생하면 데이터베이스 에러 응답처리
@@ -69,14 +69,15 @@ public class UserServiceImplementation implements UserService {
 
       // 유저 email로 중복검사
       String email = dto.getEmail();
-      
-      //^ boolean isExistEmail = userRepository.existsByEmail(email);
-      //^ if (!isExistEmail) return ResponseDto.notExistUser();
-      //^ boolean형태로는 데이터값을 찾을 수가 없어서 데이터 값을 찾기 위해 findByEmail을 사용함
+
+      // ^ boolean isExistEmail = userRepository.existsByEmail(email);
+      // ^ if (!isExistEmail) return ResponseDto.notExistUser();
+      // ^ boolean형태로는 데이터값을 찾을 수가 없어서 데이터 값을 찾기 위해 findByEmail을 사용함
 
       UserEntity userEntity = userRepository.findByEmail(email);
-      if (userEntity == null) return ResponseDto.notExistUser();
-        
+      if (userEntity == null)
+        return ResponseDto.notExistUser();
+
       // 데이터 저장하고
       userEntity.setNickname(nickname);
       userRepository.save(userEntity);

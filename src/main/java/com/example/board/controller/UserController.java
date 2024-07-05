@@ -27,8 +27,8 @@ public class UserController {
   @GetMapping("/{email}")
   public ResponseEntity<? super GetUserResponseDto> getUser(
       @PathVariable("email") String email) {
-    ResponseEntity<? super GetUserResponseDto> respnse = userService.getUser(email);
-    return respnse;
+    ResponseEntity<? super GetUserResponseDto> response = userService.getUser(email);
+    return response;
   }
 
   // 닉네임 수정
